@@ -1,38 +1,69 @@
-.App {
-  text-align: center;
+.EmojiPickerReact {
+    position: absolute;
+    top: -350px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+:root {
+    --intagram: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+    --gray: #8e8e8e;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Firefox */
+* {
+    scrollbar-width: 5px;
+    scrollbar-color: var(--secondary) var(--primary);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 15px;
 }
 
-.App-link {
-  color: #61dafb;
+*::-webkit-scrollbar-track {
+    background: var(--primary);
+    border-radius: 5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+*::-webkit-scrollbar-thumb {
+    background-color: var(--secondary);
+    border-radius: 14px;
+    border: 3px solid var(--primary);
+}
+
+.swiper-button-next::after {
+    font-size: 13px !important;
+    font-weight: 900;
+    color: rgb(176, 176, 176);
+    height: 25px;
+    width: 25px;
+    background-color: white;
+    box-shadow: 0px 0px 3px rgb(176, 176, 176);
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-button-prev::after {
+    font-size: 13px !important;
+    font-weight: 900;
+    color: rgb(176, 176, 176);
+    height: 25px;
+    width: 25px;
+    background-color: white;
+    box-shadow: 0px 0px 3px rgb(176, 176, 176);
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-pagination-bullet {
+    background-color: rgb(172, 172, 172) !important;
+
+}
+
+.swiper-pagination-bullet-active {
+    background-color: white !important;
+
 }
