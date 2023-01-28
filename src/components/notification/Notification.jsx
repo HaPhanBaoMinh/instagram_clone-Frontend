@@ -25,7 +25,7 @@ function Notification({ notifications, onClickNotification }) {
     }
 
     return (
-        <div className='w-[400px] overflow-hidden border rounded-tr-2xl rounded-br-2xl h-full bg-white absolute top-0 xl:left-[100%] md:left-[75px] shadow-[20px_-1px_20px_-20px_rgb(0,0,0,0.25);]	'>
+        <div className='w-[400px] border overflow-scroll rounded-tr-2xl rounded-br-2xl h-full bg-white absolute top-0 xl:left-[100%] md:left-[75px] shadow-[20px_-1px_20px_-20px_rgb(0,0,0,0.25);]	'>
             <h1 className='text-2xl p-3 font-semibold'>Notifications</h1>
             {
                 notifications.map(notification => <NotificationItem type={notification.type} onClick={onClickNotification} key={notification._id} user={notification.action_userInfo} post={notification.postInfo} />)

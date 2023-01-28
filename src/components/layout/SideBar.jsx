@@ -21,7 +21,7 @@ function SideBar({ onClickCreate }) {
   const [search, setSearch] = useState(false);
   const [notification, setNotification] = useState(false);
   const [notificationList, setnotificationList] = useState([]);
-  const { Auth } = useContext(AuthContext);
+  const { Auth, setAuth } = useContext(AuthContext);
   const socket = useContext(SocketContext);
   const dispath = useDispatch();
   const newMessageInfo = useSelector(state => state.messageNotification);
@@ -135,6 +135,14 @@ function SideBar({ onClickCreate }) {
     }
   }
 
+  const onLogout = () => {
+    setAuth(null);
+    localStorage.removeItem("refreshToken");
+    localStorage.removeItem("payload");
+    localStorage.removeItem("password");
+    localStorage.removeItem("token");
+  }
+
   const selectList = [
     { logo: <AiOutlineHome className='text-3xl md:text-3xl mx-auto md:mx-0' />, name: "Home", active: <AiTwotoneHome className='text-3xl md:text-3xl mx-auto md:mx-0' />, path: "/home" },
     { logo: <AiOutlineSearch className='text-3xl md:text-3xl mx-auto md:mx-0' />, name: "Search", active: <AiOutlineSearch className='text-3xl md:text-3xl mx-auto md:mx-0 font-medium' />, method: onClickSearch },
@@ -202,7 +210,7 @@ function SideBar({ onClickCreate }) {
 
               <div className=''>
                 <Menu.Item>
-                  <div className='h-9 w-full py-5 flex items-center justify-between px-3 rounded-md hover:cursor-pointer hover:bg-[#fafafa]'>
+                  <div onClick={onLogout} className='h-9 w-full py-5 flex items-center justify-between px-3 rounded-md hover:cursor-pointer hover:bg-[#fafafa]'>
                     <h3 className='font-normal'>Log out</h3>
                   </div>
                 </Menu.Item>

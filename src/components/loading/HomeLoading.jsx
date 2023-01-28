@@ -9,7 +9,7 @@ import { BsThreeDots } from 'react-icons/bs'
 function HomeLoading() {
     return (
         <div id='feeds' className='w-full flex flex-col gap-3 max-w-[470px] xl:float-left mx-auto h-full lg:mx-auto xl:mr-3'>
-            <div className='w-full h-[110px] flex justify-between border mt-3 bg-white px-4 rounded-lg py-1'>
+            {/* <div className='w-full h-[110px] flex justify-between border mt-3 bg-white px-4 rounded-lg py-1'>
                 <div className='h-full flex-col justify-center w-fit flex items-center'>
                     <div className={`animate-pulse w-[50px] h-[50px] bg-[#c7c7c7] p-[2px] cursor-pointer rounded-full flex justify-center items-center`}>
                     </div>
@@ -45,7 +45,7 @@ function HomeLoading() {
                     </div>
                     <div className='w-[100%] h-3 mt-1 bg-[#dddddd] animate-pulse'></div>
                 </div>
-            </div>
+            </div> */}
             <div className='w-full h-[85%]'>
                 <div className='w-full mb-3 box-content overflow-hidden rounded-lg border'>
                     {/* Header */}

@@ -11,13 +11,14 @@ import PostItem from '../components/post/PostItem'
 import srcLogo from "../images/images.jfif"
 import AuthContext from '../context/AuthProvider';
 import PopupUpdateAvatar from '../components/profile/PopupUpdateAvatar'
+import { Link } from 'react-router-dom'
 
 function Profile() {
     const [selected, setSelected] = useState('posts');
     const { username } = useParams();
     const [profile, setProfile] = useState();
     const [isLoading, setIsLoading] = useState(false);
-    const { Auth } = useContext(AuthContext);
+    const { Auth, setAuth } = useContext(AuthContext);
     const [isSeftProfile, setIsSeftProfile] = useState(false);
     const [isNewFollow, setIsNewFollow] = useState(false);
     const [confirmUnFollow, setConfirmUnFollow] = useState(false);
@@ -33,7 +34,22 @@ function Profile() {
             };
         }
         getProfile();
-    }, [document.URL])
+    }, [document.URL]);
+
+    const updateAvatar = (newAvatar) => {
+        // setProfile(auth => (
+        //     {
+        //         ...auth,
+        //         avatar: newAvatar
+        //     }
+        // ))
+        setAuth(auth => (
+            {
+                ...auth,
+                avatar: newAvatar
+            }
+        ))
+    }
 
     useEffect(() => {
         const checkIsFollow = async () => {
@@ -133,7 +149,9 @@ function Profile() {
                                     {
                                         isSeftProfile
                                             ?
-                                            <button className='animation-waving-hand font-normal cursor-pointer transition-all hover:bg-[#d6d6d6] bg-[#efefef] px-3 h-[80%] rounded-md '>Edit profile</button>
+                                            <Link to={"/account/edit"}>
+                                                <button className='animation-waving-hand font-normal cursor-pointer transition-all hover:bg-[#d6d6d6] px-3 py-2 bg-[#efefef] h-[80%] rounded-md '>Edit profile</button>
+                                            </Link>
                                             :
                                             <>
 
@@ -255,7 +273,7 @@ function Profile() {
                     </div>
                 </div>
             </div>
-            {onUpdateAvatar && isSeftProfile ? <PopupUpdateAvatar onClose={onSelectUpdateAvatar} setProfile={setProfile} /> : undefined}
+            {onUpdateAvatar && isSeftProfile ? <PopupUpdateAvatar onClose={onSelectUpdateAvatar} updateAvatar={updateAvatar} /> : undefined}
         </>
     )
 }

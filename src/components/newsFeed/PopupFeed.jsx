@@ -19,12 +19,15 @@ import AuthContext from '../../context/AuthProvider';
 import instanceAxios from '../../api/axios';
 import { useCountTime } from '../../hooks/useCountTime';
 import Comment from './Comment';
+import SocketContext from '../../context/SocketProvider';
 
 function PopupFeed({ onClickSave, onClickLike, save, like = false, likeCount = 0, onClickClose, post, profile, updateCountComment }) {
     const { Auth } = useContext(AuthContext);
     const comment = useRef();
     const [comments, setComments] = useState([]);
+    const socket = useContext(SocketContext);
     const [postTimeStep] = useCountTime(post.created_at);
+
     useEffect(() => {
         const getComments = async () => {
             const result = await instanceAxios.get(`/comment/${post._id}`);
@@ -56,7 +59,10 @@ function PopupFeed({ onClickSave, onClickLike, save, like = false, likeCount = 0
                     _id: Auth._id,
                 }
             }
-
+            socket.emit('comment_post', {
+                post_id: post._id,
+                user_id: Auth._id,
+            })
             setComments(comment => [...comment, newComment]);
         }
         updateCountComment();

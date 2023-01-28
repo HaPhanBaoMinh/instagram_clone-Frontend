@@ -1,28 +1,37 @@
 import React, { useContext, useRef } from 'react'
 import instanceAxios from '../../api/axios';
 import AuthContext from '../../context/AuthProvider';
+import { toast } from 'react-toastify';
 
-const PopupUpdateAvatar = ({ onClose, setProfile }) => {
+const PopupUpdateAvatar = ({ onClose, updateAvatar }) => {
     const formData = useRef(new FormData());
     const { Auth, setAuth } = useContext(AuthContext);
+
+    const toastOption = {
+        position: "bottom-right",
+        autoClose: 8000,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "dark",
+    };
 
     const onSelectAvatar = async (file) => {
         if (!file) return;
         if (!Auth) return;
         formData.current.append('image', file);
         formData.current.append('user_id', Auth._id);
-        const result = await instanceAxios.post("/user/avatar", formData.current);
+        try {
+            const result = await instanceAxios.post("/user/avatar", formData.current);
+            if (result.data.status) {
+                formData.current.delete("image");
+                formData.current.delete("user_id");
+                onClose();
+                updateAvatar(result.data.newAvatar);
+                toast.success("Updated avatar", toastOption)
+            }
+        } catch (error) {
+            toast.error(error.message, toastOption)
 
-        if (result.data.status) {
-            formData.current.delete("image");
-            formData.current.delete("user_id");
-            onClose();
-            setProfile(auth => (
-                {
-                    ...auth,
-                    avatar: result.data.newAvatar
-                }
-            ))
         }
 
     }

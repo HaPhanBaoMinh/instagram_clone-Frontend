@@ -21,7 +21,7 @@ function Home() {
             {data ? <h1>{data}</h1> : undefined} */}
             <canvas id='myCanvas' className="hidden" />
 
-            <div className='max-w-[821px] h-auto mx-auto'>
+            <div className='max-w-[821px] h-auto mx-auto my-5'>
                 <FeedsContainer />
                 <Suggestions />
             </div>

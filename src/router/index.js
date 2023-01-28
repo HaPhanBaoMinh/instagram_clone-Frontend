@@ -1,4 +1,5 @@
 import BlankLayout from "../components/blankLayout/BlankLayout";
+import EditProfile from "../page/EditProfile";
 import Home from "../page/Home";
 import Login from "../page/Login";
 import Message from "../page/Message";
@@ -18,6 +19,7 @@ const authRouter = [
     { path: "/user/:username", component: Profile, layout: null },
     { path: "/trending", component: Trending, layout: null },
     { path: "/post/:post_id", component: PostDetail, layout: null },
+    { path: "/account/edit", component: EditProfile, layout: null },
 ]
 
 

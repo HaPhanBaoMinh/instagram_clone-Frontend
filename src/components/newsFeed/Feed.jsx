@@ -23,6 +23,7 @@ import AuthContext from '../../context/AuthProvider';
 import instanceAxios from '../../api/axios';
 import { v4 as uuidv4 } from 'uuid';
 import SocketContext from '../../context/SocketProvider';
+import { Link } from 'react-router-dom';
 
 function Feed({ feed }) {
     const [like, setLike] = useState(false);
@@ -100,6 +101,11 @@ function Feed({ feed }) {
         if (result.data.status) {
             comment.current.value = "";
         }
+
+        socket.emit('comment_post', {
+            post_id: feed._id,
+            user_id: Auth._id,
+        })
         setCommentCount(count => count + 1);
     }
 
@@ -120,7 +126,7 @@ function Feed({ feed }) {
                         <div className={`w-[41px] h-[41px] border-red-400 border-[2px] p-[2px] cursor-pointer rounded-full flex justify-center items-center`}>
                             <img loading="lazy" src={`${ROUTER}/image/${feed.user.avatar}`} alt="" className='w-full h-full object-cover rounded-full' />
                         </div>
-                        <a href="/" className='text-sm font-medium hover:text-[#616161] transition-all'> {feed.user.username} </a>
+                        <Link to={`/user/${feed.user.username}`} className='text-sm font-medium hover:text-[#616161] transition-all'> {feed.user.username} </Link>
                     </div>
                     <div className='flex items-center cursor-pointer'>
                         <BsThreeDots className='text-lg' />
