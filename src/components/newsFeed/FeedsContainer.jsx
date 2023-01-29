@@ -34,7 +34,7 @@ function FeedsContainer() {
 
     return (
         <div id='feeds' className='w-full flex flex-col gap-3 max-w-[470px] xl:float-left mx-auto h-full lg:mx-auto xl:mr-3'>
-            {/* <StoryBox /> */}
+            <StoryBox />
             <div className='w-full h-[85%]'>
                 {
                     feeds.map(feed => <Feed key={uuidv4()} feed={feed} />)

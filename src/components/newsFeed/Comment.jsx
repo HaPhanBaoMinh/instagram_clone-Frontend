@@ -51,6 +51,12 @@ function Comment({ comment }) {
         }
     }
 
+    if (!comment) {
+        return (
+            <p>Loading...</p>
+        )
+    }
+
     return (
         <>
             <div key={comment._id} className='w-full py-3 h-fit px-3 bg-white gap-3 flex items-start justify-between'>

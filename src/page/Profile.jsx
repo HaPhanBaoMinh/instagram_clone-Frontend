@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useCallback, useContext, useEffect, useState } from 'react'
 import { AiOutlineSetting, AiOutlineTag } from 'react-icons/ai'
 import { BsGrid3X3 } from 'react-icons/bs'
 import { HiOutlinePlus } from 'react-icons/hi'
@@ -12,6 +12,7 @@ import srcLogo from "../images/images.jfif"
 import AuthContext from '../context/AuthProvider';
 import PopupUpdateAvatar from '../components/profile/PopupUpdateAvatar'
 import { Link } from 'react-router-dom'
+import FollowListPopup from '../components/followList/FollowListPopup'
 
 function Profile() {
     const [selected, setSelected] = useState('posts');
@@ -21,15 +22,19 @@ function Profile() {
     const { Auth, setAuth } = useContext(AuthContext);
     const [isSeftProfile, setIsSeftProfile] = useState(false);
     const [isNewFollow, setIsNewFollow] = useState(false);
-    const [confirmUnFollow, setConfirmUnFollow] = useState(false);
+    // const [confirmUnFollow, setConfirmUnFollow] = useState(false);
     const [onUpdateAvatar, setOnUpdateAvatar] = useState(false);
+    const [followSelectPopup, setFollowSelectPopup] = useState(false);
+    const [followerCount, setFollowerCount] = useState(0);
 
     useEffect(() => {
         const getProfile = async () => {
             setIsLoading(true);
             const result = await instanceAxios.get(`/user/${username}`);
+            console.log(result);
             if (result.data.status) {
                 setProfile(result.data.result);
+                setFollowerCount(result.data.result.followers);
                 setIsLoading(false);
             };
         }
@@ -81,6 +86,10 @@ function Profile() {
         setOnUpdateAvatar(!onUpdateAvatar);
     }
 
+    const onSelectFollowPopup = (select) => {
+        setFollowSelectPopup(select);
+    }
+
 
     const onClickFollow = async () => {
         const data = {
@@ -126,9 +135,11 @@ function Profile() {
         setSelected('tagged')
     }
 
+
     if (isLoading || !profile) {
         return <ProfileLoading />
     }
+
 
     return (
         <>
@@ -173,11 +184,11 @@ function Profile() {
                                         <span className='font-medium'> {profile.posts} </span>
                                         posts
                                     </span>
-                                    <span>
-                                        <span className='font-medium'> {profile.followers} </span>
+                                    <span onClick={() => onSelectFollowPopup("Followers")} className="cursor-pointer">
+                                        <span className='font-medium'> {followerCount} </span>
                                         followers
                                     </span>
-                                    <span>
+                                    <span onClick={() => onSelectFollowPopup("Following")} className="cursor-pointer">
                                         <span className='font-medium'> {profile.following} </span>
                                         following
                                     </span>
@@ -190,6 +201,7 @@ function Profile() {
                             </div>
                         </div>
 
+                        {/* Story */}
                         <div className='h-1/2 w-full pt-6 flex items-center gap-10 overflow-auto'>
                             <div className='w-fit justify-center items-center flex flex-col'>
                                 <div className={`w-[77px] h-[77px] border-[#c7c7c7] border-[2px] p-[2px] cursor-pointer rounded-full flex justify-center items-center`}>
@@ -202,21 +214,21 @@ function Profile() {
                                 <div className={`w-[77px] h-[77px] border-red-400 border-[2px] p-[2px] cursor-pointer rounded-full flex justify-center items-center`}>
                                     <img loading="lazy" src={srcLogo} alt="" className='w-full h-full object-cover rounded-full' />
                                 </div>
-                                <p className='text-sm font-medium'>Tukakane</p>
+                                <p className='text-sm font-medium'>Demo</p>
                             </div>
 
                             <div className='w-fit justify-center items-center flex flex-col'>
                                 <div className={`w-[77px] h-[77px] border-red-400 border-[2px] p-[2px] cursor-pointer rounded-full flex justify-center items-center`}>
                                     <img loading="lazy" src={srcLogo} alt="" className='w-full h-full object-cover rounded-full' />
                                 </div>
-                                <p className='text-sm font-medium'>Tukakane</p>
+                                <p className='text-sm font-medium'>Demo</p>
                             </div>
 
                             <div className='w-fit justify-center items-center flex flex-col'>
                                 <div className={`w-[77px] h-[77px] border-red-400 border-[2px] p-[2px] cursor-pointer rounded-full flex justify-center items-center`}>
                                     <img loading="lazy" src={srcLogo} alt="" className='w-full h-full object-cover rounded-full' />
                                 </div>
-                                <p className='text-sm font-medium'>Tukakane</p>
+                                <p className='text-sm font-medium'>Demo</p>
                             </div>
 
                         </div>
@@ -274,6 +286,8 @@ function Profile() {
                 </div>
             </div>
             {onUpdateAvatar && isSeftProfile ? <PopupUpdateAvatar onClose={onSelectUpdateAvatar} updateAvatar={updateAvatar} /> : undefined}
+            {followSelectPopup === 'Followers' ? <FollowListPopup onClose={onSelectFollowPopup} list={followSelectPopup} /> : undefined}
+            {followSelectPopup === 'Following' ? <FollowListPopup onClose={onSelectFollowPopup} list={followSelectPopup} /> : undefined}
         </>
     )
 }

@@ -46,6 +46,7 @@ function App() {
     <Router>
       <div className="App h-screen w-full">
         <Routes>
+          <Route path="/" element={<Navigate to="/home" />} />
           {
             publicRouter.map((route, index) => {
               const Page = route.component;
@@ -91,6 +92,7 @@ function App() {
                 } />
             })
           }
+          <Route path="/:notDefine" element={<Navigate to="/home" />} />
         </Routes>
       </div>
       <ToastContainer />

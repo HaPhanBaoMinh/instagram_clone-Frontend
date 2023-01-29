@@ -34,26 +34,28 @@ function SideBar({ onClickCreate }) {
       });
 
       socket.on("notification_like", result => {
-        setnotificationList(notification => {
-          // if (!notification.find(noti => noti.action_userInfo._id === result.action_userInfo._id && noti.postInfo._id === result.postInfo._id)) {
-          if (!notification.find(noti => noti._id === result._id)) {
-            return [result, ...notification];
-          }
-          return notification
-        });
-        setIsNewNotifiaction(true);
+        if (result.action_userInfo._id !== Auth._id) {
+          setnotificationList(notification => {
+            if (!notification.find(noti => noti._id === result._id)) {
+              return [result, ...notification];
+            }
+            return notification
+          });
+          setIsNewNotifiaction(true);
+        }
       })
 
       socket.on("notification_comment", result => {
-        console.log(result);
-        setnotificationList(notification => {
-          // if (!notification.find(noti => noti.action_userInfo._id === result.action_userInfo._id && noti.postInfo._id === result.postInfo._id)) {
-          if (!notification.find(noti => noti._id === result._id)) {
-            return [result, ...notification];
-          }
-          return notification
-        });
-        setIsNewNotifiaction(true);
+        if (result.action_userInfo._id !== Auth._id) {
+          setnotificationList(notification => {
+            if (!notification.find(noti => noti._id === result._id)) {
+              return [result, ...notification];
+            }
+            return notification
+          });
+          setIsNewNotifiaction(true);
+        }
+
       })
     }
   }, [socket])

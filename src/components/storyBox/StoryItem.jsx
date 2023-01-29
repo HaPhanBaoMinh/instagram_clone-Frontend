@@ -1,5 +1,5 @@
 import React from 'react'
-import srcDemo from "../../images/308_4122.jpg"
+import srcDemo from "../../images/images.jfif"
 
 function StoryItem({ width }) {
     return (

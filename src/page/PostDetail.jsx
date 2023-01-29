@@ -70,7 +70,6 @@ function PostDetail() {
         }
         if (!Auth || isLoading) return;
         const result = await instanceAxios.post(`/comment`, data);
-        console.log(result);
         if (result.data.status) {
             comment.current.value = "";
             const newComment = {

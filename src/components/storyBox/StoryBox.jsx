@@ -26,46 +26,32 @@ function StoryBox() {
             >
                 <SwiperSlide className='w-full h-full cursor-pointer flex flex-col justify-center items-center'>
                     <StoryItem width={"58px"} />
-                    <h4 className='text-xs font-thin'>Intagram</h4>
+                    <h4 className='text-xs font-thin'>Demo</h4>
                 </SwiperSlide>
 
                 <SwiperSlide className='w-full h-full cursor-pointer flex flex-col justify-center items-center'>
                     <StoryItem width={"58px"} />
-                    <h4 className='text-xs font-thin'>Intagram</h4>
+                    <h4 className='text-xs font-thin'>Demo</h4>
                 </SwiperSlide>
 
                 <SwiperSlide className='w-full h-full cursor-pointer flex flex-col justify-center items-center'>
                     <StoryItem width={"58px"} />
-                    <h4 className='text-xs font-thin'>Intagram</h4>
+                    <h4 className='text-xs font-thin'>Demo</h4>
                 </SwiperSlide>
 
                 <SwiperSlide className='w-full h-full cursor-pointer flex flex-col justify-center items-center'>
                     <StoryItem width={"58px"} />
-                    <h4 className='text-xs font-thin'>Intagram</h4>
+                    <h4 className='text-xs font-thin'>Demo</h4>
                 </SwiperSlide>
 
                 <SwiperSlide className='w-full h-full cursor-pointer flex flex-col justify-center items-center'>
                     <StoryItem width={"58px"} />
-                    <h4 className='text-xs font-thin'>Intagram</h4>
+                    <h4 className='text-xs font-thin'>Demo</h4>
                 </SwiperSlide>
 
                 <SwiperSlide className='w-full h-full cursor-pointer flex flex-col justify-center items-center'>
                     <StoryItem width={"58px"} />
-                    <h4 className='text-xs font-thin'>Intagram</h4>
-                </SwiperSlide>
-
-                <SwiperSlide className='w-full h-full cursor-pointer flex flex-col justify-center items-center'>
-                    <div className='w-[58px] h-[58px]  border-[2px] p-[2px] rounded-full flex justify-center items-center'>
-                        <img loading="lazy" src={srcDemo} alt="" className='w-full h-full object-cover rounded-full' />
-                    </div>
-                    <h4 className='text-xs font-thin'>Intagram</h4>
-                </SwiperSlide>
-
-                <SwiperSlide className='w-full h-full cursor-pointer flex flex-col justify-center items-center'>
-                    <div className='w-[58px] h-[58px]  border-[2px] p-[2px] rounded-full flex justify-center items-center'>
-                        <img loading="lazy" src={srcDemo} alt="" className='w-full h-full object-cover rounded-full' />
-                    </div>
-                    <h4 className='text-xs font-thin'>Intagram</h4>
+                    <h4 className='text-xs font-thin'>Demo</h4>
                 </SwiperSlide>
 
             </Swiper>

@@ -1,3 +1,4 @@
+import { Navigate } from "react-router";
 import BlankLayout from "../components/blankLayout/BlankLayout";
 import EditProfile from "../page/EditProfile";
 import Home from "../page/Home";
