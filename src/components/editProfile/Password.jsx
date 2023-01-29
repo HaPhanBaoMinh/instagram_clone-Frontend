@@ -2,7 +2,7 @@ import React, { useContext, useRef, useState } from 'react'
 import AuthContext from '../../context/AuthProvider';
 import srcLogo from "../../images/images.jfif"
 import { toast } from 'react-toastify';
-import instanceAxios from '../../api/axios';
+import instanceAxios from '../../api/axiosConfig';
 import ROUTER from '../../api/router';
 import Loading from '../loading/Loading';
 

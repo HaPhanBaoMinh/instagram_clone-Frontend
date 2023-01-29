@@ -16,7 +16,7 @@ import { RxBookmark, RxBookmarkFilled } from 'react-icons/rx';
 import ROUTER from '../../api/router';
 import PostDetailLoading from '../loading/PostDetailLoading';
 import AuthContext from '../../context/AuthProvider';
-import instanceAxios from '../../api/axios';
+import instanceAxios from '../../api/axiosConfig';
 import { useCountTime } from '../../hooks/useCountTime';
 import Comment from './Comment';
 import SocketContext from '../../context/SocketProvider';

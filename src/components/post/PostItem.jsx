@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { AiFillHeart, AiFillMessage } from 'react-icons/ai';
-import instanceAxios from '../../api/axios';
+import instanceAxios from '../../api/axiosConfig';
 import ROUTER from '../../api/router';
 import AuthContext from '../../context/AuthProvider';
 import SocketContext from '../../context/SocketProvider';

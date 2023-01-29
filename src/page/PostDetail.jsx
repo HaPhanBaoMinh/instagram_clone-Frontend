@@ -6,7 +6,7 @@ import { IoClose } from 'react-icons/io5'
 import { RxBookmark, RxBookmarkFilled } from 'react-icons/rx';
 import { TbMessageCircle2 } from 'react-icons/tb';
 import { Swiper, SwiperSlide } from "swiper/react";
-import instanceAxios from '../api/axios';
+import instanceAxios from '../api/axiosConfig';
 import ROUTER from '../api/router';
 import PostDetailLoading from '../components/loading/PostDetailLoading';
 import AuthContext from '../context/AuthProvider';

@@ -5,7 +5,7 @@ import { Link, Navigate } from 'react-router-dom';
 import { useRef } from 'react';
 import { toast } from "react-toastify";
 import axios from "axios"
-import instanceAxios from "../api/axios";
+import instanceAxios from "../api/axiosConfig";
 import "react-toastify/dist/ReactToastify.css";
 import AuthContext from '../context/AuthProvider';
 

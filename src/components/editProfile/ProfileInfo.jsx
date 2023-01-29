@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { toast } from 'react-toastify';
-import instanceAxios from '../../api/axios';
+import instanceAxios from '../../api/axiosConfig';
 import ROUTER from '../../api/router';
 import AuthContext from '../../context/AuthProvider';
 import srcLogo from "../../images/images.jfif"

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
-import instanceAxios from '../api/axios';
+import instanceAxios from '../api/axiosConfig';
 import PostItem from '../components/post/PostItem';
 
 const Trending = () => {

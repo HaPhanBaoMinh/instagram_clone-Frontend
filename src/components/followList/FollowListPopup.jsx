@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { IoCloseSharp } from 'react-icons/io5'
 import { Link } from 'react-router-dom'
-import instanceAxios from '../../api/axios';
+import instanceAxios from '../../api/axiosConfig';
 import AuthContext from '../../context/AuthProvider';
 import FollowUser from './FollowUser'
 import { v4 as uuidv4 } from 'uuid';

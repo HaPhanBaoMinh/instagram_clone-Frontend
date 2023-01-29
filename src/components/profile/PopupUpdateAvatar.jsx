@@ -1,5 +1,5 @@
 import React, { useContext, useRef } from 'react'
-import instanceAxios from '../../api/axios';
+import instanceAxios from '../../api/axiosConfig';
 import AuthContext from '../../context/AuthProvider';
 import { toast } from 'react-toastify';
 

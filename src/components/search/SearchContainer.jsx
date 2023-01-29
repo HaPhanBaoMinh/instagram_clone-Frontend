@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { AiOutlineCloseCircle, AiOutlineSearch } from 'react-icons/ai'
 import { BsSearch } from 'react-icons/bs'
-import instanceAxios from '../../api/axios';
+import instanceAxios from '../../api/axiosConfig';
 import Loading from '../loading/Loading';
 import SearchItem from './SearchItem';
 import { v4 as uuidv4 } from 'uuid';

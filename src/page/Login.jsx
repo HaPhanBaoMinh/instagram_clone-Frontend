@@ -4,7 +4,7 @@ import srcLogo from "../images/Instagram_logo.svg.png"
 import { AiFillFacebook } from "react-icons/ai";
 import { Link, Navigate } from 'react-router-dom'
 import AuthContext from '../context/AuthProvider';
-import instanceAxios from '../api/axios';
+import instanceAxios from '../api/axiosConfig';
 import { toast } from 'react-toastify';
 
 function Login() {

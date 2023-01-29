@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import instanceAxios from '../../api/axios';
+import instanceAxios from '../../api/axiosConfig';
 import ROUTER from '../../api/router';
 import AuthContext from '../../context/AuthProvider';
 import Loading from '../loading/Loading';

@@ -12,7 +12,7 @@ import AuthContext from '../../context/AuthProvider';
 import SocketContext from '../../context/SocketProvider';
 import { useDispatch, useSelector } from 'react-redux';
 import { newMessageNotificationAction, resetMessageNotificationAction } from "../../redux-action/messageNotificationAction";
-import instanceAxios from '../../api/axios';
+import instanceAxios from '../../api/axiosConfig';
 import ROUTER from '../../api/router';
 import Notification from '../notification/Notification';
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import instanceAxios from '../api/axios'
+import instanceAxios from '../api/axiosConfig'
 import FeedsContainer from '../components/newsFeed/FeedsContainer'
 import Suggestions from '../components/suggestions/Suggestions'
 

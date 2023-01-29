@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { IoClose } from 'react-icons/io5'
-import instanceAxios from '../../api/axios';
+import instanceAxios from '../../api/axiosConfig';
 import AuthContext from '../../context/AuthProvider';
 import SearchMessageUser from './SearchMessageUser';
 import { v4 as uuidv4 } from 'uuid';

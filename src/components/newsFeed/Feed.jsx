@@ -20,7 +20,7 @@ import PopupFeed from './PopupFeed';
 import ROUTER from '../../api/router';
 import { useCountTime } from '../../hooks/useCountTime';
 import AuthContext from '../../context/AuthProvider';
-import instanceAxios from '../../api/axios';
+import instanceAxios from '../../api/axiosConfig';
 import { v4 as uuidv4 } from 'uuid';
 import SocketContext from '../../context/SocketProvider';
 import { Link } from 'react-router-dom';

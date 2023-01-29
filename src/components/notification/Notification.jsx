@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import instanceAxios from '../../api/axios';
+import instanceAxios from '../../api/axiosConfig';
 import AuthContext from '../../context/AuthProvider';
 import SocketContext from '../../context/SocketProvider';
 import srcLogo from "../../images/308_4122.jpg"

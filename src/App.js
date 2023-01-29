@@ -7,7 +7,7 @@ import AuthContext from './context/AuthProvider';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "swiper/css/bundle";
-import instanceAxios from './api/axios';
+import instanceAxios from './api/axiosConfig';
 import SocketContext, { SocketProvider } from './context/SocketProvider';
 import { CLIENT_ROUTER } from './api/router';
 

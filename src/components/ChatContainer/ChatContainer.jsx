@@ -4,7 +4,7 @@ import { FiEdit, FiSend } from "react-icons/fi";
 import srcLogo from "../../images/313399065_1027735465289593_7195031916021187795_n.jpg";
 import { BsCameraVideo, BsInfoCircle, BsTelephone } from 'react-icons/bs';
 import RecipientUser from './RecipientUser';
-import instanceAxios from '../../api/axios';
+import instanceAxios from '../../api/axiosConfig';
 import AuthContext from '../../context/AuthProvider';
 import ROUTER from '../../api/router';
 import ChatboxLoading from "../loading/ChatboxLoading"

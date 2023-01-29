@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import StoryBox from '../storyBox/StoryBox'
 import Feed from './Feed'
 import AuthContext from '../../context/AuthProvider';
-import instanceAxios from '../../api/axios';
+import instanceAxios from '../../api/axiosConfig';
 import HomeLoading from '../loading/HomeLoading';
 import { v4 as uuidv4 } from 'uuid';
 
