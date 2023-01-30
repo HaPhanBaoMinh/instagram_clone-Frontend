@@ -6,13 +6,13 @@ import AuthContext from '../../context/AuthProvider';
 import FollowUser from './FollowUser'
 import { v4 as uuidv4 } from 'uuid';
 
-function FollowListPopup({ onClose, list }) {
+function FollowListPopup({ onClose, list, profile }) {
     const { Auth } = useContext(AuthContext);
     const [follower, setFollower] = useState([]);
 
     const getFollowerUser = async () => {
         try {
-            const result = await instanceAxios.get(`/user/follower/${Auth._id}`);
+            const result = await instanceAxios.get(`/user/follower/${profile._id}`);
             console.log(result);
             if (result.data.status) {
                 setFollower(result.data.result);
@@ -24,7 +24,7 @@ function FollowListPopup({ onClose, list }) {
 
     const getFollowingUser = async () => {
         try {
-            const result = await instanceAxios.get(`/user/following/${Auth._id}`);
+            const result = await instanceAxios.get(`/user/following/${profile._id}`);
             if (result.data.status) {
                 setFollower(result.data.result);
             }
@@ -34,7 +34,7 @@ function FollowListPopup({ onClose, list }) {
     }
 
     useEffect(() => {
-        if (!Auth) return;
+        if (!profile) return;
         if (list === 'Followers') {
             getFollowerUser();
         }
@@ -43,7 +43,7 @@ function FollowListPopup({ onClose, list }) {
             getFollowingUser();
         }
 
-    }, [Auth])
+    }, [profile])
 
 
     return (

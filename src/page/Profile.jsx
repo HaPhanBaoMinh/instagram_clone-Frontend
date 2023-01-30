@@ -286,8 +286,8 @@ function Profile() {
                 </div>
             </div>
             {onUpdateAvatar && isSeftProfile ? <PopupUpdateAvatar onClose={onSelectUpdateAvatar} updateAvatar={updateAvatar} /> : undefined}
-            {followSelectPopup === 'Followers' ? <FollowListPopup onClose={onSelectFollowPopup} list={followSelectPopup} /> : undefined}
-            {followSelectPopup === 'Following' ? <FollowListPopup onClose={onSelectFollowPopup} list={followSelectPopup} /> : undefined}
+            {followSelectPopup === 'Followers' ? <FollowListPopup onClose={onSelectFollowPopup} profile={profile} list={followSelectPopup} /> : undefined}
+            {followSelectPopup === 'Following' ? <FollowListPopup onClose={onSelectFollowPopup} profile={profile} list={followSelectPopup} /> : undefined}
         </>
     )
 }
