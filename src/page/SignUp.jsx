@@ -17,6 +17,7 @@ function SignUp() {
     const [Error, setError] = useState({});
     const { setAuth } = useContext(AuthContext);
     const [SignUpSuccess, setSignUpSuccess] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     const toastOption = {
         position: "bottom-right",
@@ -27,6 +28,7 @@ function SignUp() {
     };
 
     const onSignup = async () => {
+        setIsLoading(true);
         let Error = {};
         let isValidInfo = true;
 
@@ -81,6 +83,7 @@ function SignUp() {
             }
             setAuth({ ...result.data.insert, ...result.data.token });
             setSignUpSuccess(true);
+            setIsLoading(false);
         } catch (error) {
             console.log(error.message);
         }
@@ -116,10 +119,16 @@ function SignUp() {
                     <input type="password" ref={password} className='block appearance-none border rounded-sm text-sm outline-none w-5/6 h-8 py-5 px-2 bg-[#fafafa] m-auto pl-2' placeholder='Password' />
                     {Error.password ? <span className='text-[12px] w-5/6 m-auto block text-red-400'>{Error.password}</span> : undefined}
                 </div>
-                <button onClick={onSignup} className='w-5/6 block transition-all font-semibold hover:bg-[#1c8edb] text-white py-2 mt-5 rounded-md m-auto bg-[#4db5f9]'> Sign up </button>
+                <button onClick={onSignup} className='w-5/6 block transition-all font-semibold hover:bg-[#1c8edb] text-white py-2 mt-5 rounded-md m-auto bg-[#4db5f9]'>
+                    {isLoading ?
+                        <div className="h-[10px] m-auto w-[10px] rounded-full p-2 border-2 animate-spin border-t-blue-500 border-t-1 ">
+                        </div>
+                        : "Sign up"
+                    }
+                </button>
                 <h3 className='font-semibold text-center mt-5'>Have an account?
                     <Link to='/login'>
-                        <span className='text-blue-600 hover:cursor-pointer transition-all hover:text-blue-700'>  Log in</span>
+                        <span className='text-blue-600 hover:cursor-pointer transition-all hover:text-blue-700'>Log in</span>
                     </Link>
                 </h3>
             </div>

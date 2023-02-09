@@ -19,6 +19,7 @@ import { BsEmojiSmile } from "react-icons/bs";
 import { MdDone } from "react-icons/md";
 import axios from 'axios';
 import AuthContext from '../../context/AuthProvider';
+import ROUTER from '../../api/router';
 
 
 function CreatePost({ onClickCreate }) {
@@ -440,7 +441,7 @@ function CreatePost({ onClickCreate }) {
 
         try {
             setpostStep(4)
-            const result = await axios.post("http://localhost:5000/post", formData.current);
+            const result = await axios.post(`${ROUTER}/post`, formData.current);
             if (result.data.status === true) {
 
                 //clean formData

@@ -13,7 +13,6 @@ import { CLIENT_ROUTER } from './api/router';
 
 function App() {
   const { Auth, setAuth } = useContext(AuthContext);
-  const socket = useContext(SocketContext);
   useEffect(() => {
     const autoLogin = async () => {
       const payload = localStorage.getItem("payload");

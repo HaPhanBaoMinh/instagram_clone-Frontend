@@ -3,7 +3,7 @@ import ROUTER, { CLIENT_ROUTER } from "./router";
 
 const instanceAxios = axios.create({
     baseURL: ROUTER,
-    timeout: 3 * 1000,
+    timeout: 10 * 1000,
     // headers: {
     //     "Content-Type": "application/json"
     // }

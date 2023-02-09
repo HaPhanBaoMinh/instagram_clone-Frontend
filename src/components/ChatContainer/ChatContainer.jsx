@@ -24,6 +24,7 @@ function ChatContainer() {
     const [popupConverstation, setPopupConverstation] = useState(false);
     const scrollRef = useRef(null);
     const [newConverstation, setNewConverstation] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         const getChatList = async () => {
@@ -85,6 +86,7 @@ function ChatContainer() {
     }
 
     const onSendMessage = async (e) => {
+        setIsLoading(true);
         e.preventDefault();
         const data = {
             sender_id: Auth._id,
@@ -96,8 +98,9 @@ function ChatContainer() {
             setMessageList(list => [...list, result.data.insert]);
         }
         socket.emit("send_message", data)
-
         message.current.value = ""
+        setIsLoading(false);
+
     }
 
     if (!Auth) {
@@ -154,7 +157,14 @@ function ChatContainer() {
                                 <form onSubmit={e => onSendMessage(e)} className='w-full px-3 h-[50px] flex justify-between items-center bg-white'>
                                     <FaRegSmile className='text-2xl cursor-pointer' />
                                     <input ref={message} type="text" className='w-[80%] bg-transparent outline-none border-none text-base' placeholder='Add a comment...' />
-                                    <h1 onClick={e => onSendMessage(e)} className='font-medium hover:cursor-pointer transition-all text-blue-500 hover:text-black'>Send</h1>
+                                    <h1 onClick={e => onSendMessage(e)} className='font-medium hover:cursor-pointer transition-all text-blue-500 hover:text-black'>
+                                        {
+                                            isLoading ?
+                                                <div className="h-[10px] m-auto w-[10px] rounded-full p-2 border-2 animate-spin border-t-blue-500 border-t-1 ">
+                                                </div>
+                                                : "Send"
+                                        }
+                                    </h1>
                                 </form>
                             </div>
                         </div>

@@ -13,6 +13,7 @@ function Login() {
   const [Error, setError] = useState({});
   const { setAuth } = useContext(AuthContext);
   const [SignUpSuccess, setSignUpSuccess] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const toastOption = {
     position: "bottom-right",
@@ -23,6 +24,7 @@ function Login() {
   };
 
   const onLogin = async () => {
+    setIsLoading(true);
     let Error = {};
     let isValidInfo = true;
 
@@ -49,6 +51,7 @@ function Login() {
       const result = await instanceAxios.post("/user/login", data);
       if (result.data.status === false) {
         toast.error(result.data.message, toastOption);
+        setIsLoading(false);
         return;
       }
 
@@ -60,10 +63,12 @@ function Login() {
         localStorage.setItem("payload", phoneOrEmail.current.value);
         localStorage.setItem("password", password.current.value);
       }
+      setIsLoading(false);
       setAuth({ ...result.data.result, ...result.data.token });
       setSignUpSuccess(true);
-    } catch (error) {
 
+    } catch (error) {
+      console.log(error);
     }
   }
 
@@ -88,7 +93,13 @@ function Login() {
             <input ref={password} type="password" className='px-2 block appearance-none rounded-sm border text-sm outline-none w-5/6 h-8 py-5 bg-[#fafafa] m-auto pl-2 mt-2' placeholder='Password' />
             {Error.password ? <span className='text-[12px] w-5/6 m-auto block text-red-400'>{Error.password}</span> : undefined}
 
-            <button onClick={onLogin} className='w-5/6 block transition-all hover:bg-[#1c8edb] text-white py-2 mt-5 rounded-md m-auto bg-[#4db5f9] font-semibold'>Login</button>
+            <button onClick={onLogin} className='w-5/6 block transition-all hover:bg-[#1c8edb] text-white py-2 mt-5 rounded-md m-auto bg-[#4db5f9] font-semibold'>
+              {isLoading ?
+                <div className="h-[10px] m-auto w-[10px] rounded-full p-2 border-2 animate-spin border-t-blue-500 border-t-1 ">
+                </div>
+                : "Login"
+              }
+            </button>
             <div className='w-5/6  mt-5 m-auto flex items-center justify-between'>
               <span className='w-2/5 block border-t border-[#aaaaaa]'></span>
               <h3 className='font-semibold text-[#aaaaaa]'>OR</h3>
